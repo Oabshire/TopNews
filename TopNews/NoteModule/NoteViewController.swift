@@ -45,9 +45,9 @@ class NoteViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let article = self.articles[indexPath.row]
-//        let datailViewController = ModuleAssembler.assemblyDetailModule(article: article)
-//        navigationController?.pushViewController(datailViewController, animated: true)
+        let article = presenter.articles[indexPath.row]
+        let datailViewController = ModuleAssembler.assemblyDetailModule(article: article)
+        navigationController?.pushViewController(datailViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

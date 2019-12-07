@@ -16,6 +16,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     let imageTableViewCell = ImageTableViewCell()
     let descriptionTableViewCell = DescriptionTableViewCell()
+    let buttonTableViewCell = ButtonTableViewCell()
     
     let tableView = UITableView()
     
@@ -31,12 +32,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.rowHeight = UITableView.automaticDimension
         view.addSubview(tableView)
         
+        self.tableView.separatorColor = UIColor.white
+        
         tableView.register(ImageTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.reuseID)
         tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: DescriptionTableViewCell.reuseID)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,21 +47,37 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             let cell = imageTableViewCell
             cell.newsImageView.image = article?.image ?? #imageLiteral(resourceName: "Default")
             return cell
-        } else {
+        } else if indexPath.row == 1 {
+            let cell = buttonTableViewCell
+            return cell
+        }else{
             let cell = descriptionTableViewCell
             cell.titleLabel.text = article?.title
             cell.descriptionLabel.text = article?.description
-            
             return cell
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           tableView.deselectRow(at: indexPath, animated: false)
+        if indexPath.row == 1{
+            guard let url = stringToUrl() else {return}
+            navigationController?.pushViewController(WebViewController(url: url), animated: true)
+        }
+        tableView.deselectRow(at: indexPath, animated: false)
        }
+    
+    func stringToUrl()->URL?{
+        print(article?.url as Any)
+        if let url = URL(string: article?.url ?? ""){
+            print(url)
+            return url
+        }
+        return nil
+    }
 }
 
 extension DetailViewController: DetailViewProtocol{
     func setArticle(article: SimpleArticle?) {
         self.article = article
     }
+
 }

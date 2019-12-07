@@ -34,7 +34,7 @@ class DescriptionTableViewCell: UITableViewCell {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     override func updateConstraints() {
-        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2).isActive = true
        titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -2).isActive = true
         titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
@@ -71,7 +71,7 @@ class DescriptionTableViewCell: UITableViewCell {
     func contentHieght() -> CGFloat {
         let rectDescription: CGRect = descriptionLabel.text!.boundingRect(with: CGSize(width: contentView.frame.width, height: CGFloat.greatestFiniteMagnitude), options: ([.usesLineFragmentOrigin, .usesFontLeading]), attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Regular", size: 30) as Any], context: nil)
         let rectTitle: CGRect = titleLabel.text!.boundingRect(with: CGSize(width: contentView.frame.width, height: CGFloat.greatestFiniteMagnitude), options: ([.usesLineFragmentOrigin, .usesFontLeading]), attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 30) as Any], context: nil)
-        let textHeight: CGFloat = rectTitle.size.height + rectDescription.size.height
+        let textHeight: CGFloat = rectTitle.size.height + rectDescription.size.height + 20
         return textHeight
     }
 }

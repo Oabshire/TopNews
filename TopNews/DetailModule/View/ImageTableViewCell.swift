@@ -31,7 +31,7 @@ class ImageTableViewCell: UITableViewCell {
         newsImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
         newsImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -5).isActive = true
         
-        let heightForContentView = newsImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor, constant: 0.7)
+        let heightForContentView = newsImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor,multiplier: 0.8)
         heightForContentView.priority = UILayoutPriority(rawValue: 999)
         heightForContentView.isActive = true
         

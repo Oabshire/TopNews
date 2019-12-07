@@ -12,6 +12,7 @@ protocol Assembler{ //Абстрактная фабрика
     static func assemblyNewsModule()-> UIViewController// Каждый модуль это продукт 
     static func assemblyDetailModule(article: SimpleArticle?)->UIViewController
     static func assemblyNoteModule()->UIViewController
+    static func assemblyWebModule(url: URL)->UIViewController
 }
 
 class ModuleAssembler: Assembler{ //Конкретная Фабрика
@@ -39,6 +40,12 @@ class ModuleAssembler: Assembler{ //Конкретная Фабрика
         let coreDataService = CoreDataManager.shared
         let presenter = NotePresenter(view: view, coreDataService: coreDataService)
         view.presenter = presenter
+        return view
+    }
+    
+    static func assemblyWebModule(url: URL)->UIViewController{
+        let networkConnectionService = NetworkConnectionService()
+        let view = WebViewController(url: url)
         return view
     }
 }
