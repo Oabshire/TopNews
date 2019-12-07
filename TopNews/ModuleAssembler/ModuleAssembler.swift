@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol Assembler{
-    static func assemblyNewsModule()-> UIViewController
+protocol Assembler{ //Абстрактная фабрика
+    static func assemblyNewsModule()-> UIViewController// Каждый модуль это продукт 
     static func assemblyDetailModule(article: SimpleArticle?)->UIViewController
     static func assemblyNoteModule()->UIViewController
 }
 
-class ModuleAssembler: Assembler{
+class ModuleAssembler: Assembler{ //Конкретная Фабрика
     
     static func assemblyNewsModule() -> UIViewController {
         let tabBarItem = UITabBarItem(title: "Новости", image: UIImage(named: "news"), tag: 0)
