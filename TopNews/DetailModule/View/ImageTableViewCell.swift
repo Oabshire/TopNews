@@ -16,8 +16,9 @@ class ImageTableViewCell: UITableViewCell {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         
         contentView.backgroundColor = .white
-        
+        newsImageView.image?.accessibilityFrame = newsImageView.frame
         newsImageView.contentMode = .scaleAspectFill
+        newsImageView.clipsToBounds = true
         contentView.addSubview(newsImageView)
         newsImageView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -31,8 +32,9 @@ class ImageTableViewCell: UITableViewCell {
         newsImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
         newsImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -5).isActive = true
         
+        
         let heightForContentView = newsImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor,multiplier: 0.8)
-        heightForContentView.priority = UILayoutPriority(rawValue: 999)
+        heightForContentView.priority = UILayoutPriority(rawValue: 1000)
         heightForContentView.isActive = true
         
         super.updateConstraints()

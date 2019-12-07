@@ -43,9 +43,6 @@ refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont(name: "Rockwell-Bold", size: 35.0) ?? UIFont.boldSystemFont(ofSize: 35)]
         self.tableView.separatorColor = UIColor.white
         
-        view.addSubview(tableView)
-        tableView.refreshControl = refreshControl
-        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.reuseID)
         
         view.backgroundColor = .lightGray
         
@@ -100,12 +97,32 @@ refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
 extension NewsViewController: NewsViewProtocol{
     func success() {
         DispatchQueue.main.async {
+            self.view.addSubview(self.tableView)
+            self.tableView.refreshControl = self.refreshControl
+            self.tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.reuseID)
             self.tableView.reloadData()
         }
     }
     func failure(error: Error?) {
-        let alert  = UIAlertController(title: "Warning", message: "Check Internet Connection", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        let refreshButton: UIButton = {
+            let button = UIButton()
+            button.setImage(#imageLiteral(resourceName: "refresh"), for: .normal)
+            button.setImage(#imageLiteral(resourceName: "refreshTapped"), for: .highlighted)
+            button.sizeToFit()
+            button.addTarget(self, action: #selector(refresh), for:  .touchUpInside)
+            return button
+        }()
+        let label:UILabel = {
+            let label = UILabel()
+            label.text = "Отсутсвует подключение к интернету"
+            label.font = UIFont(name: "g", size: 20)
+            label.sizeToFit()
+            return label
+        }()
+        
+        refreshButton.center = CGPoint(x: view.center.x ,y:view.center.y-40)
+        label.center = CGPoint(x: view.center.x ,y:view.center.y+20)
+        view.addSubview(label)
+        view.addSubview(refreshButton)
     }
 }
