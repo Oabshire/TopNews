@@ -15,6 +15,11 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let tableView = UITableView()
     
+    let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
     
     init(title: String, tabBarItem: UITabBarItem) {
         
@@ -39,6 +44,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.separatorColor = UIColor.white
         
         view.addSubview(tableView)
+        tableView.refreshControl = refreshControl
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.reuseID)
         
         view.backgroundColor = .lightGray
@@ -80,6 +86,14 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         saveAction.backgroundColor = .orange
         
         return [saveAction]
+    }
+    
+    @objc
+    func refresh(){
+        print("--------StartRefreshing-------")
+        refreshControl.endRefreshing()
+        presenter.downloadNews(country: "us", category: "entertainment", token: "3ea77deb1c4447eb8dd3619b369fb042")
+        print("--------EndRefreshing-------")
     }
 }
 
