@@ -11,7 +11,6 @@
 		091CF8C3239BC6A6001AA07F /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091CF8C2239BC6A6001AA07F /* ButtonTableViewCell.swift */; };
 		091CF8C5239BE0C8001AA07F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091CF8C4239BE0C8001AA07F /* WebViewController.swift */; };
 		091CF8C9239BE629001AA07F /* WebPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091CF8C8239BE629001AA07F /* WebPresenter.swift */; };
-		091CF8CC239BE66F001AA07F /* NoConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091CF8CB239BE66F001AA07F /* NoConnectionViewController.swift */; };
 		0957D23823990BF60073EE70 /* NotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D23723990BF60073EE70 /* NotePresenter.swift */; };
 		0957D23C23990D0D0073EE70 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D23B23990D0D0073EE70 /* CoreDataManager.swift */; };
 		0957D23E239912EB0073EE70 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D23D239912EB0073EE70 /* CoreDataStack.swift */; };
@@ -58,7 +57,6 @@
 		091CF8C2239BC6A6001AA07F /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		091CF8C4239BE0C8001AA07F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		091CF8C8239BE629001AA07F /* WebPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPresenter.swift; sourceTree = "<group>"; };
-		091CF8CB239BE66F001AA07F /* NoConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionViewController.swift; sourceTree = "<group>"; };
 		0957D23723990BF60073EE70 /* NotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePresenter.swift; sourceTree = "<group>"; };
 		0957D23B23990D0D0073EE70 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0957D23D239912EB0073EE70 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				091CF8C4239BE0C8001AA07F /* WebViewController.swift */,
-				091CF8CB239BE66F001AA07F /* NoConnectionViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -451,7 +448,6 @@
 			files = (
 				09C9993B239426B2009A8B26 /* FirstViewController.swift in Sources */,
 				09BB5D4C2397B3B000C9DF48 /* DetailViewController.swift in Sources */,
-				091CF8CC239BE66F001AA07F /* NoConnectionViewController.swift in Sources */,
 				09C9992F2394177E009A8B26 /* NewsModel.swift in Sources */,
 				09BB5D4F2397B4E400C9DF48 /* ImageTableViewCell.swift in Sources */,
 				0957D23823990BF60073EE70 /* NotePresenter.swift in Sources */,

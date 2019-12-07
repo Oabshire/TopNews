@@ -46,6 +46,9 @@ class ModuleAssembler: Assembler{ //Конкретная Фабрика
     static func assemblyWebModule(url: URL)->UIViewController{
         let networkConnectionService = NetworkConnectionService()
         let view = WebViewController(url: url)
+        let presenter = WebPresenter(view: view, networkConnectionService: networkConnectionService)
+        view.presenter = presenter
+        
         return view
     }
 }

@@ -60,7 +60,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1{
             guard let url = stringToUrl() else {return}
-            navigationController?.pushViewController(WebViewController(url: url), animated: true)
+            let webViewController = ModuleAssembler.assemblyWebModule(url: url)
+            navigationController?.pushViewController(webViewController, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: false)
        }
