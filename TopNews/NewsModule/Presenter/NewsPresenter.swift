@@ -15,7 +15,7 @@ protocol NewsViewProtocol: class {
 
 protocol NewsViewPresenterProtocol: class{
     init(view: NewsViewProtocol, networkService: NetworkManagerProtocol, coreDataService: CoreDataManagerProtocol)
-    func downloadNews(country: String, category: String, token:String) -> ()
+    func downloadNews(country: String, category: String?, token:String) -> ()
     func saveNews(article:SimpleArticle)
     var articles:[SimpleArticle] {get set}
 }
@@ -33,11 +33,16 @@ class NewsPresenter: NewsViewPresenterProtocol{
         self.coreDataService = coreDataService
     }
     
-    func  downloadNews(country: String, category: String, token:String) -> (){
+    func  downloadNews(country: String, category: String?, token:String) -> (){
         
-        let parameters = ["country": country,"category": category,"apiKey":token]
+        var parameters:[String:String] = [:]
+        
+        if let categoryForEndpoint  = category{
+         parameters = ["country": country,"category": categoryForEndpoint,"apiKey":token]
+        }else {
+        parameters = ["country": country,"apiKey":token]
+        }
         let endpoint = Endpoint(baseURL: "https://newsapi.org/", path: "v2/top-headlines", parameters: parameters)
-        
         networkService.downloadNews(endpoint: endpoint,completion: {[weak self] result in
             guard let self = self else {return}
             switch result{
