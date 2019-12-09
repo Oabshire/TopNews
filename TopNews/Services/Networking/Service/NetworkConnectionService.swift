@@ -9,7 +9,10 @@
 import Foundation
 import SystemConfiguration
 
+/// This protocol defines the methods that the **NetworkConnectionService** class must have.
 protocol NetworkConnectionServiceProtocol {
+    
+    /// This is a function that checks for a connection.
     func isConnectedToNetwork() -> Bool
 }
 

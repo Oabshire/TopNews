@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+
+///Сlass that is needed to work with CoreData
 class CoreDataStack {
     
     static let shared = CoreDataStack()

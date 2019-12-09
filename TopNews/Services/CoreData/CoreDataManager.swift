@@ -9,10 +9,24 @@
 import UIKit
 import CoreData
 
+
+/// This protocol defines the methods that the **CoreDataManagerProtocol** class must have.
 protocol CoreDataManagerProtocol {
+    
+    ///Function that reads data from a database.
     func readFavorites()-> [SimpleArticle]
+    
+    
+    /// A function that saves data to a database.
+    /// - Parameter article: Data to be saved.
     func saveFavoriteNews(article: SimpleArticle)
+    
+    
+    /// Function that deletes data from a database.
+    /// - Parameter indexPath: Data to be deleted.
     func deleteFavoriteNews(indexPath: IndexPath)
+    
+    /// Function that returns **NSFetchedResultsController<MOArticle>**
     func getFetchedResultsController() -> NSFetchedResultsController<MOArticle>
 }
 

@@ -8,8 +8,10 @@
 
 import UIKit
 
+/// A class that defines the view of Note table.
 class NoteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    /// Presenter of NoteModule
     var presenter: NoteViewPresenterProtocol!
     
     let tableView = UITableView()

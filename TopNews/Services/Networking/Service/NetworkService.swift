@@ -8,8 +8,17 @@
 
 import Foundation
 
+/// This protocol defines the methods that the **NetworkService** class must have.
 protocol NetworkProtocol: AnyObject {
     
+    /// Initializer of class
+    /// - Parameter session: the session in which the task will work
+    init(_ session: URLSession)
+    
+    ///The function that forms and resumes the task
+    /// - Parameters:
+    ///   - request: request for download data
+    ///   - completion: can be **Data?** or **Error**
     func performTask(with request: URLRequest, completion: @escaping (Result<Data?, Error>) -> Void)
 }
 
@@ -17,7 +26,7 @@ class NetworkService: NetworkProtocol{
     
     private let session: URLSession
     
-    init(_ session: URLSession) {
+    required init(_ session: URLSession) {
         self.session = session
     }
     

@@ -8,16 +8,22 @@
 
 import Foundation
 
+///The methods adopted by the object you use to implement the interaction between the View and Presenter.
 protocol  DetailViewProtocol: class {
+    
+    /// This function set data to self article.
+    /// - Parameter article: article to set.
     func setArticle(article: SimpleArticle?)
 }
 
-protocol DetailViewPresenterProtocol: class {
+///The methods adopted by the object that you use to implement the interaction between the Model and the View.
+protocol DetailPresenterProtocol: class {
     init(view: DetailViewProtocol, article: SimpleArticle?)
     func setArticle()
 }
 
-class DetailPresenter: DetailViewPresenterProtocol{
+///  The object that implements the interaction between the Model and the View.
+class DetailPresenter: DetailPresenterProtocol{
     
     weak var view: DetailViewProtocol?
     let article: SimpleArticle?

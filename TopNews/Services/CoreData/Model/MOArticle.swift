@@ -8,8 +8,11 @@
 
 import Foundation
 import CoreData
+ 
 
 @objc(MOArticle)
+
+/// DataModel for database
 internal class MOArticle: NSManagedObject {
     @NSManaged var title: String
     @NSManaged var content: String

@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         let tabBarController = UITabBarController()
-        let first = UINavigationController(rootViewController: ModuleAssembler.assemblyNewsModule()) // клиент вызывает методы фабрикри
-        let second = UINavigationController(rootViewController: ModuleAssembler.assemblyNoteModule())  // клиент вызывает методы фабрикри
+        let first = UINavigationController(rootViewController: ModuleAssembler.assemblyNewsModule())
+        let second = UINavigationController(rootViewController: ModuleAssembler.assemblyNoteModule()) 
         
         
         tabBarController.tabBar.tintColor = UIColor(red:0.10, green:0.4, blue:0.35, alpha: 1.0)

@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// A class that defines the view of cell
+
 class NoteTableViewCell: UITableViewCell {
     
     public static let reuseID = "Note"
@@ -46,7 +48,6 @@ class NoteTableViewCell: UITableViewCell {
         nameLabel.textColor  = .black
         
         newsImageView.layer.masksToBounds = false
-//        newsImageView.layer.cornerRadius = 10.0
         newsImageView.contentMode = .scaleAspectFill
         newsImageView.frame = CGRect(x: 0, y: 0, width: backView.frame.width*0.9, height: backView.frame.width*0.7)
         newsImageView.clipsToBounds = true
@@ -79,6 +80,10 @@ class NoteTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    /// Function to calculate the height of content.
+    /// - Parameters:
+    ///   - text: Content text.
+    ///   - maxWidth: Maximum width of the text.
     static func contentHieght(text: String, maxWidth: CGFloat) -> CGFloat {
         let rect: CGRect = text.boundingRect(with: CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude), options: ([.usesLineFragmentOrigin, .usesFontLeading]), attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20) as Any], context: nil)
         let textHeight: CGFloat = rect.size.height

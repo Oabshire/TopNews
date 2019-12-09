@@ -20,12 +20,10 @@ class DescriptionTableViewCell: UITableViewCell {
         
         titleLabel.textAlignment = .natural
         titleLabel.numberOfLines = 0
-//        titleLabel.sizeToFit()
         titleLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 30)
         
         descriptionLabel.textAlignment = .natural
         descriptionLabel.numberOfLines = 0
-//        descriptionLabel.sizeToFit()
         descriptionLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 30)
         
         addSubview(titleLabel)
@@ -68,6 +66,7 @@ class DescriptionTableViewCell: UITableViewCell {
         return true
     }
     
+    ///It calculates the height of the cell content.
     func contentHieght() -> CGFloat {
         let rectDescription: CGRect = descriptionLabel.text!.boundingRect(with: CGSize(width: contentView.frame.width, height: CGFloat.greatestFiniteMagnitude), options: ([.usesLineFragmentOrigin, .usesFontLeading]), attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Regular", size: 30) as Any], context: nil)
         let rectTitle: CGRect = titleLabel.text!.boundingRect(with: CGSize(width: contentView.frame.width, height: CGFloat.greatestFiniteMagnitude), options: ([.usesLineFragmentOrigin, .usesFontLeading]), attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 30) as Any], context: nil)

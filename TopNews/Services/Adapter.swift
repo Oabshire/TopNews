@@ -8,14 +8,18 @@
 
 import Foundation
 
+///This protocol defines the methods that the **Adapter** class must have.
 protocol AdapterProtocol {
+    
+    /// A function that turns an article into a simple article
+    /// - Parameter articleToAdapt: An article to turn into a simple article.
     func adapt(articleToAdapt: Article) -> SimpleArticle
 }
 
 class Adapter : AdapterProtocol{
     let imageService : ImageServiceProtocol
     init(){
-        imageService = ImageService()
+        imageService = ImageWebService()
     }
     func adapt(articleToAdapt: Article) -> SimpleArticle{
         let title = articleToAdapt.title ?? ""

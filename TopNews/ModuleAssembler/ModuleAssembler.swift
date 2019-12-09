@@ -8,14 +8,26 @@
 
 import UIKit
 
-protocol Assembler{ //Абстрактная фабрика
-    static func assemblyNewsModule()-> UIViewController// Каждый модуль это продукт 
+
+///This protocol defines the methods that Assembler should have.
+protocol Assembler{
+
+    ///This function builds a News Module.
+    static func assemblyNewsModule()-> UIViewController
+    
+    /// This function builds a Detail Module.
+    /// - Parameter article: the article whose description will be shown
     static func assemblyDetailModule(article: SimpleArticle?)->UIViewController
+    
+    /// This function builds a Note Module.
     static func assemblyNoteModule()->UIViewController
+    
+    /// This function builds a Web Module.
+    /// - Parameter url: url which Web View will open
     static func assemblyWebModule(url: URL)->UIViewController
 }
 
-class ModuleAssembler: Assembler{ //Конкретная Фабрика
+class ModuleAssembler: Assembler{
     
     static func assemblyNewsModule() -> UIViewController {
         let tabBarItem = UITabBarItem(title: "Новости", image: UIImage(named: "news"), tag: 0)

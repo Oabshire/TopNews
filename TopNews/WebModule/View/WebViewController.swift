@@ -33,7 +33,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WebViewProtocol
         
     }
     
-    func succes() {
+    func showWebView() {
         webView = WKWebView()
         webView.navigationDelegate = self
         webView.frame = view.frame
@@ -44,7 +44,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WebViewProtocol
         view.addSubview(webView)
     }
     
-    func failure() {
+    func showNoConnection(){
         let refreshButton: UIButton = {
             let button = UIButton()
             button.setImage(#imageLiteral(resourceName: "refresh"), for: .normal)
@@ -67,6 +67,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WebViewProtocol
         view.addSubview(refreshButton)
     }
     
+    /// Obj-c metod to refresh WebView.
     @objc
     func refresh(){
         presenter.checkConnection()

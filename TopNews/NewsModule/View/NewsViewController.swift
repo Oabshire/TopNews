@@ -162,7 +162,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         print("--------StartRefreshing-------")
         refreshControl.endRefreshing()
-        presenter.downloadNews(country: "us", category: "entertainment", token: "3ea77deb1c4447eb8dd3619b369fb042")
+        presenter.downloadNews(country: "ru", category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
         
         print("--------EndRefreshing-------")
         
@@ -172,7 +172,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
 }
 
 extension NewsViewController: NewsViewProtocol{
-    func success() {
+    func showNewsTable() {
         
         DispatchQueue.main.async {
             UIView.setAnimationsEnabled(false)
@@ -183,7 +183,7 @@ extension NewsViewController: NewsViewProtocol{
             self.tableView.reloadData()
         }
     }
-    func failure(error: Error?) {
+    func showNoConnectionView(){
         UIView.setAnimationsEnabled(false)
         view.layer.removeAllAnimations()
         

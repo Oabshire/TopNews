@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// This struct desripts simple article
 struct SimpleArticle{
     var title: String
     var description: String

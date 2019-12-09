@@ -27,21 +27,10 @@ class ButtonTableViewCell: UITableViewCell {
         view.backgroundColor = UIColor(red:0.10, green:0.4, blue:0.35, alpha: 1.0)
         return view
     }()
-    //
-    //    let webButton: UIButton = {
-    //        let button = UIButton()
-    //        button.setTitle("Посмотреть в источнике", for: .normal)
-    //        button.titleLabel?.font = UIFont(name: "NotoSansOriya-Bold", size: 25)
-    //        button.backgroundColor =  UIColor(red:0.10, green:0.4, blue:0.35, alpha: 1.0)
-    //        button.layer.cornerRadius = 10
-    //        button.addTarget( self, action: #selector(viewWeb), for: .touchUpInside)
-    //        return button
-    //    }()
-    //
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        //        buttonView.addSubview(label)
         addSubview(buttonView)
         buttonView.addSubview(label)
     }
@@ -60,13 +49,10 @@ class ButtonTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
 }

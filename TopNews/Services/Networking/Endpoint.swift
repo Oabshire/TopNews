@@ -9,6 +9,8 @@
 import Foundation
 
 
+
+///The structure that describes the endpoint.
 struct Endpoint {
     var baseURL: String
     var path: String

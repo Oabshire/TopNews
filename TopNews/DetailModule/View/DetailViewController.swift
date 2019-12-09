@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var presenter: DetailViewPresenterProtocol!
+    var presenter: DetailPresenterProtocol!
     
     var article: SimpleArticle?
     
@@ -59,21 +59,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1{
-            guard let url = stringToUrl() else {return}
+            guard let url = URL(string: article?.url ?? "") else {return}
             let webViewController = ModuleAssembler.assemblyWebModule(url: url)
             navigationController?.pushViewController(webViewController, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: false)
        }
-    
-    func stringToUrl()->URL?{
-        print(article?.url as Any)
-        if let url = URL(string: article?.url ?? ""){
-            print(url)
-            return url
-        }
-        return nil
-    }
 }
 
 extension DetailViewController: DetailViewProtocol{

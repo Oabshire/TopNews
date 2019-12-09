@@ -8,11 +8,15 @@
 
 import UIKit
 
+///This protocol defines the methods that the ** ImageWebService** class must have.
 protocol ImageServiceProtocol{
+    
+    /// This function download image and return it or Default Image.
+    /// - Parameter urlString: String representation of url on which the Image is located
     func downloadImage(urlString: String) -> UIImage
 }
 
-class ImageService: ImageServiceProtocol{
+class ImageWebService: ImageServiceProtocol{
     func downloadImage(urlString: String) -> UIImage {
         let urlOpt = URL(string: urlString)
         if let url = urlOpt{
