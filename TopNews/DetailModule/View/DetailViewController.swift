@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var presenter: DetailPresenterProtocol!
+    var presenter: DetailPresenterProtocol?
     
     var article: SimpleArticle?
     
@@ -23,7 +23,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         navigationController?.navigationBar.tintColor = .white
         
-        presenter.setArticle()
+        presenter?.setArticle()
         super.viewDidLoad()
         tableView.frame = view.frame
         tableView.delegate = self

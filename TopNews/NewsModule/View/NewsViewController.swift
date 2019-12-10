@@ -61,10 +61,10 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationController?.navigationBar.barTintColor =  UIColor(red:0.10, green:0.4, blue:0.35, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont(name: "Rockwell-Bold", size: 35.0) ?? UIFont.boldSystemFont(ofSize: 35)]
         self.tableView.separatorColor = UIColor.white
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setParameters))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(setParameters))
         navigationController?.viewControllers[0].navigationItem.rightBarButtonItem = addButton
         
-        
+        navigationController?.navigationBar.tintColor = .white
         view.backgroundColor = .white
         
         presenter?.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")

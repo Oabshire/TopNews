@@ -44,7 +44,8 @@ class WebPresenter: WebViewPresenterProtocol{
     func checkConnection(){
         if networkConnectionService.isConnectedToNetwork() == true{
             self.view?.showWebView()
-        } else{
+        }
+        else{
             self.view?.showNoConnection()
         }
     }
