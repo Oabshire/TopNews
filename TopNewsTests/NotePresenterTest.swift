@@ -18,7 +18,7 @@ class NotePresenterTest: XCTestCase {
     var coreDataService: MockCoreDataService!
     var presenter : NotePresenter!
     
-    
+    //arrange
     override func setUp() {
         view = MockNoteView()
         coreDataService = MockCoreDataService()
@@ -34,7 +34,9 @@ class NotePresenterTest: XCTestCase {
     }
     
     func testDownloadNewsIsCorrect() {
+        //act
         presenter.downloadNews()
+        //assert
         XCTAssertEqual(presenter.articles, [ SimpleArticle(title: "Apple Cyber Monday deals: MacBook Air, iPad, Apple Watch Series 5, HomePod, AirPods - The Verge", description: "It’s been surprisingly easy to find good Black Friday deals on recent Apple products, and that remains mostly true for Cyber Monday. You can still find big discounts on the seventh-generation iPad, MacBook Air and Pro, and more.", image: #imageLiteral(resourceName: "Default"), url: "https://www.cnn.com/2019/12/09/investing/premarket-stocks-trading/index.html"),SimpleArticle(title: "Here’s the hard-money call for why the boom in the economy and stock market will continue - MarketWatch", description: "You might think the hard-money, recession-at-every-corner crowd would be predicting an imminent reversal in the stock market given the 20% gain for the Dow...", image: #imageLiteral(resourceName: "Default"), url: "https://www.marketwatch.com/story/heres-the-hard-money-call-for-why-the-boom-in-the-economy-and-stock-market-will-continue-2019-12-09") ])
     }
     

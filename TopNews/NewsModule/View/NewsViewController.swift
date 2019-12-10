@@ -11,7 +11,7 @@ import UIKit
 
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var presenter: NewsViewPresenterProtocol!
+    var presenter: NewsViewPresenterProtocol?
     
     let tableView = UITableView()
     
@@ -67,29 +67,29 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         view.backgroundColor = .white
         
-        presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+        presenter?.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let article = presenter.articles[indexPath.row]
+        let article = presenter?.articles[indexPath.row]
         let datailViewController = ModuleAssembler.assemblyDetailModule(article: article)
         navigationController?.pushViewController(datailViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.articles.count
+        return presenter?.articles.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.reuseID, for: indexPath) as! NewsTableViewCell
-        cell.nameLabel.text = presenter.articles[indexPath.row].title
-        cell.newsImageView.image = presenter.articles[indexPath.row].image
+        cell.nameLabel.text = presenter?.articles[indexPath.row].title
+        cell.newsImageView.image = presenter?.articles[indexPath.row].image
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let labelHight = NewsTableViewCell.contentHieght(text: presenter.articles[indexPath.row].title , maxWidth: tableView.frame.width * 0.8)
+        let labelHight = NewsTableViewCell.contentHieght(text: presenter?.articles[indexPath.row].title ?? "" , maxWidth: tableView.frame.width * 0.8)
         return labelHight + view.frame.maxX - 75
     }
     
@@ -151,8 +151,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        guard let presenter = self.presenter else{ return nil }
         let saveAction = UITableViewRowAction(style: .destructive, title: "Save") { (_, _) in
-            self.presenter.saveNews(article: self.presenter.articles[indexPath.row])
+            presenter.saveNews(article: presenter.articles[indexPath.row])
         }
         saveAction.backgroundColor = .orange
         
@@ -166,7 +167,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         print("--------StartRefreshing-------")
         refreshControl.endRefreshing()
-        presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+        presenter?.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
         
         print("--------EndRefreshing-------")
         
@@ -179,23 +180,23 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let addTaskAllert = UIAlertController(title: "Выберете страну", message: nil, preferredStyle: .actionSheet)
         let russuiaAction = UIAlertAction(title: "Russia", style: .default){ _ in
             self.country = "ru"
-            self.presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+            self.presenter?.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
         }
         let usaAction = UIAlertAction(title: "USA", style: .default){ _ in
             self.country = "us"
-            self.presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+            self.presenter?.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
         }
         let ukraineAction = UIAlertAction(title: "Ukraine", style: .default){ _ in
             self.country = "ua"
-            self.presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+            self.presenter?.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
              }
         let canadaAction = UIAlertAction(title: "Canada", style: .default){ _ in
             self.country = "ca"
-            self.presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+            self.presenter?.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
              }
         let indiaAction = UIAlertAction(title: "India", style: .default){ _ in
             self.country = "in"
-            self.presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+            self.presenter?.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

@@ -13,6 +13,7 @@ class ImageWebServiceTest: XCTestCase {
     var imageWebService: ImageServiceProtocol!
     
     override func setUp() {
+        //arrange
         imageWebService = ImageWebService()
         super.setUp()
     }
@@ -22,12 +23,16 @@ class ImageWebServiceTest: XCTestCase {
     }
 
     func testLoadImageWithValidUrl() {
+        //act
         let resultImage = imageWebService.downloadImage(urlString: "https://static01.nyt.com/images/2019/12/10/world/10chezch1/10chezch1-facebookJumbo.jpg")
+        //assert
         XCTAssertNotNil(resultImage)
     }
 
     func testLoadImageWithInvalidUrl() {
+        //act
         let resultImage = imageWebService.downloadImage(urlString: "InvalidURL")
+        //assert
         XCTAssertEqual(resultImage, #imageLiteral(resourceName: "Default") )
     }
 }
