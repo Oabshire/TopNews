@@ -9,7 +9,7 @@
 import UIKit
 
 /// This struct desripts simple article
-struct SimpleArticle{
+struct SimpleArticle: Equatable{
     var title: String
     var description: String
     var image: UIImage

@@ -89,5 +89,4 @@ extension NoteViewController: NoteViewProtocol{
     func setNews() {
         tableView.reloadData()
     }
-    
 }

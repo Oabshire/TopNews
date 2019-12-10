@@ -21,11 +21,12 @@ final class NetworkManager: NetworkManagerProtocol {
     let newsAPI:NewsAPI
     let checkConnection: NetworkConnectionServiceProtocol
     let adapter :AdapterProtocol
+    let imageService = ImageWebService()
     
     private init() {
         newsAPI = NewsAPI(networkService: networkSevice)
         checkConnection = NetworkConnectionService()
-        adapter = Adapter()
+        adapter = Adapter(imageService: imageService)
     }
     
     func downloadNews(endpoint: Endpoint, completion: @escaping(Result<[SimpleArticle]?, Error>) -> ()){

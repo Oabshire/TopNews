@@ -25,9 +25,6 @@ protocol CoreDataManagerProtocol {
     /// Function that deletes data from a database.
     /// - Parameter indexPath: Data to be deleted.
     func deleteFavoriteNews(indexPath: IndexPath)
-    
-    /// Function that returns **NSFetchedResultsController<MOArticle>**
-    func getFetchedResultsController() -> NSFetchedResultsController<MOArticle>
 }
 
 
@@ -50,7 +47,7 @@ extension CoreDataManager:  CoreDataManagerProtocol{
             for item in articles{
                 let simpleArticle = SimpleArticle(title: item.value(forKey: "title") as! String,
                                                   description: item.value(forKey: "content") as! String,
-                                                  image:/* UIImage(data: item.value(forKey: "image") as! Data) ?? */ #imageLiteral(resourceName: "Default"),
+                                                  image: UIImage(data: item.value(forKey: "image") as! Data) ??  #imageLiteral(resourceName: "Default"),
                                                   url: item.value(forKey: "url") as! String)
                 simpleArticles.append(simpleArticle)
             }
@@ -81,22 +78,6 @@ extension CoreDataManager:  CoreDataManagerProtocol{
             print ("---!!!!End Delete!!!!! ---")
             try! managedContext.save()
         }
-    }
-    
-    func getFetchedResultsController() -> NSFetchedResultsController<MOArticle> {
-        let context = stack.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<MOArticle>(entityName: "Article")
-                  fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                    managedObjectContext: context,
-                                                    sectionNameKeyPath: nil,
-                                                    cacheName: nil)
-        do {
-            try controller.performFetch()
-        } catch {
-            fatalError("Failed to fetch entities: \(error)")
-        }
-        return controller
     }
     
 }

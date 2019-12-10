@@ -57,7 +57,6 @@ class NewsPresenter: NewsViewPresenterProtocol{
     func  downloadNews(country: String, category: String?, token:String) -> (){
         
         var parameters:[String:String] = [:]
-        
         if let categoryForEndpoint  = category{
          parameters = ["country": country,"category": categoryForEndpoint,"apiKey":token]
         }else {

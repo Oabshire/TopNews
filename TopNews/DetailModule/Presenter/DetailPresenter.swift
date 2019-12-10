@@ -11,6 +11,8 @@ import Foundation
 ///The methods adopted by the object you use to implement the interaction between the View and Presenter.
 protocol  DetailViewProtocol: class {
     
+    var article: SimpleArticle? { get set}
+    
     /// This function set data to self article.
     /// - Parameter article: article to set.
     func setArticle(article: SimpleArticle?)

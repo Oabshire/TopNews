@@ -50,30 +50,11 @@ class NotePresenter: NoteViewPresenterProtocol{
     
     func downloadNews(){
         print("______PresenterDowloadedNews_______")
-        let fetchedResultsController: NSFetchedResultsController<MOArticle> = {
-            let controller = coreDataService.getFetchedResultsController()
-            return controller
-        }()
-        
-        if let fetchedResults = fetchedResultsController.fetchedObjects {
-            print(fetchedResults.count)
-            articles = []
-            var counter = 0
-            for item in fetchedResults {
-                let title = item.title
-                let description = item.content
-                let url = item.url
-                let image = UIImage(data:item.image) ?? #imageLiteral(resourceName: "Default")
-                
-                let currentArticle = SimpleArticle(title: title, description: description, image: image, url: url)
-                
-                self.articles.append(currentArticle)
-                
-                counter = counter + 1
-            }
-            self.view?.setNews()
-        }
+        let articles =  coreDataService.readFavorites()
+        self.articles = articles
+        self.view?.setNews()
     }
+    
     func deleleNews(indexPath: IndexPath){
         coreDataService.deleteFavoriteNews(indexPath:indexPath)
         self.articles.remove(at: indexPath.row)

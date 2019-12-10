@@ -13,12 +13,12 @@ protocol ImageServiceProtocol{
     
     /// This function download image and return it or Default Image.
     /// - Parameter urlString: String representation of url on which the Image is located
-    func downloadImage(urlString: String) -> UIImage
+    func downloadImage(urlString: String?) -> UIImage
 }
 
 class ImageWebService: ImageServiceProtocol{
-    func downloadImage(urlString: String) -> UIImage {
-        let urlOpt = URL(string: urlString)
+    func downloadImage(urlString: String?) -> UIImage {
+        let urlOpt = URL(string: urlString ?? "")
         if let url = urlOpt{
             do {
                 let dataImage = try Data(contentsOf: url)

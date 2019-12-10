@@ -35,17 +35,18 @@ final class NewsAPI: NewsAPIProtocol{
             guard let self = self else {return}
             switch result{
             case .success(let data):
-                
-                NewsParser.parse(data: data!, completion: { [weak self] result in
-                    guard self != nil else {return}
-                    switch result{
-                    case .success(let newsModel):
-                        completion(.success(newsModel))
-                    case .failure(let error):
-                        print("Parsing error")
-                        completion(.failure(error))
-                    }
-                })
+                if let data = data{
+                    NewsParser.parse(data: data, completion: { [weak self] result in
+                        guard self != nil else {return}
+                        switch result{
+                        case .success(let newsModel):
+                            completion(.success(newsModel))
+                        case .failure(let error):
+                            print("Parsing error")
+                            completion(.failure(error))
+                        }
+                    })
+                }
             case .failure( let error):
                 completion(.failure(error))
             }
