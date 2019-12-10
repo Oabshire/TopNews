@@ -15,6 +15,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let tableView = UITableView()
     
+    var country = "ru"
+    
     let refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -59,11 +61,13 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationController?.navigationBar.barTintColor =  UIColor(red:0.10, green:0.4, blue:0.35, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont(name: "Rockwell-Bold", size: 35.0) ?? UIFont.boldSystemFont(ofSize: 35)]
         self.tableView.separatorColor = UIColor.white
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(setParameters))
+        navigationController?.viewControllers[0].navigationItem.rightBarButtonItem = addButton
         
         
         view.backgroundColor = .white
         
-        presenter.downloadNews(country: "ru", category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+        presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -162,18 +166,52 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         print("--------StartRefreshing-------")
         refreshControl.endRefreshing()
-        presenter.downloadNews(country: "ru", category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+        presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
         
         print("--------EndRefreshing-------")
         
         refreshButton.isHidden = false
         label.isHidden = false
     }
+    
+    @objc
+    func setParameters(){
+        let addTaskAllert = UIAlertController(title: "Выберете страну", message: nil, preferredStyle: .actionSheet)
+        let russuiaAction = UIAlertAction(title: "Russia", style: .default){ _ in
+            self.country = "ru"
+            self.presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+        }
+        let usaAction = UIAlertAction(title: "USA", style: .default){ _ in
+            self.country = "us"
+            self.presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+        }
+        let ukraineAction = UIAlertAction(title: "Ukraine", style: .default){ _ in
+            self.country = "ua"
+            self.presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+             }
+        let canadaAction = UIAlertAction(title: "Canada", style: .default){ _ in
+            self.country = "ca"
+            self.presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+             }
+        let indiaAction = UIAlertAction(title: "India", style: .default){ _ in
+            self.country = "in"
+            self.presenter.downloadNews(country: self.country, category: nil, token: "3ea77deb1c4447eb8dd3619b369fb042")
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        addTaskAllert.addAction(russuiaAction)
+        addTaskAllert.addAction(usaAction)
+        addTaskAllert.addAction(ukraineAction)
+        addTaskAllert.addAction(canadaAction)
+        addTaskAllert.addAction(indiaAction)
+        addTaskAllert.addAction(cancelAction)
+        present(addTaskAllert, animated: true, completion: nil)
+    }
 }
 
 extension NewsViewController: NewsViewProtocol{
     func showNewsTable() {
-        
         DispatchQueue.main.async {
             UIView.setAnimationsEnabled(false)
             self.view.layer.removeAllAnimations()

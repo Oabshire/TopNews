@@ -22,7 +22,7 @@
 		0957D2452399331A0073EE70 /* SimpleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D2442399331A0073EE70 /* SimpleModel.swift */; };
 		0957D248239980960073EE70 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D247239980960073EE70 /* NoteViewController.swift */; };
 		0957D24A239980B50073EE70 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D249239980B50073EE70 /* NoteTableViewCell.swift */; };
-		0972611B239FB930003F9293 /* ImageWebServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972611A239FB930003F9293 /* ImageWebServiceTest.swift */; };
+		0972612223A016D2003F9293 /* ImageWebServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972612123A016D2003F9293 /* ImageWebServiceTest.swift */; };
 		09948F21239EE65900678E27 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C999322394180F009A8B26 /* NewsPresenter.swift */; };
 		09948F22239EE65D00678E27 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0710923941669000E80E7 /* NewsViewController.swift */; };
 		09948F23239EE66100678E27 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C9993823941E5A009A8B26 /* NewsTableViewCell.swift */; };
@@ -98,7 +98,7 @@
 		0957D2442399331A0073EE70 /* SimpleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleModel.swift; sourceTree = "<group>"; };
 		0957D247239980960073EE70 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		0957D249239980B50073EE70 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
-		0972611A239FB930003F9293 /* ImageWebServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWebServiceTest.swift; sourceTree = "<group>"; };
+		0972612123A016D2003F9293 /* ImageWebServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWebServiceTest.swift; sourceTree = "<group>"; };
 		09B0710423941669000E80E7 /* TopNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09B0710723941669000E80E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09B0710923941669000E80E7 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 				09351E58239EF40100C8F6DB /* NewsPresenterTest.swift */,
 				09351E5A239EFD9400C8F6DB /* DetailPresenterTest.swift */,
 				09351E5D239F02EF00C8F6DB /* NotePresenterTest.swift */,
-				0972611A239FB930003F9293 /* ImageWebServiceTest.swift */,
+				0972612123A016D2003F9293 /* ImageWebServiceTest.swift */,
 				09351E56239EEEEA00C8F6DB /* AdapterTest.swift */,
 			);
 			path = TopNewsTests;
@@ -518,7 +518,7 @@
 				09948F28239EE69D00678E27 /* NetworkService.swift in Sources */,
 				09948F31239EE6F600678E27 /* WebViewController.swift in Sources */,
 				09948F27239EE69200678E27 /* SimpleModel.swift in Sources */,
-				0972611B239FB930003F9293 /* ImageWebServiceTest.swift in Sources */,
+				0972612223A016D2003F9293 /* ImageWebServiceTest.swift in Sources */,
 				09948F30239EE6F000678E27 /* NotePresenter.swift in Sources */,
 				09948F33239EE70100678E27 /* MOArticle.swift in Sources */,
 				09948F2F239EE6E800678E27 /* NoteViewController.swift in Sources */,
